@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte - La boutique{% endblock %}
+
+{% block content %}
+<h1> Mon compte </h1>
+{% if is_granted('ROLE_ADMIN') %}
+    <small> <a href="{{path('admin')}}"> Vous êtes administrateur ? accéder au backoffice ?</a></small></br/>
+{% endif %}
+Bienvenue {{app.user.firstname}} dans votre compte.<br/> C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+<hr>
+
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="account-item text-center">
+            <img src="{{ asset('assets/img/lock.png') }}" style ="max-width:32px;max-height:32px "alt="modifier mon mots de passe">
+            <a href="{{path('account_password')}}"> Modifier mon mot de passe</a></br/>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="account-item text-center">
+            <img src="{{ asset('assets/img/location-pin.png') }}"style ="max-width:32px;max-height:32px" alt="gérer mes adresses">
+            <a href="{{path('account_address')}}"> Gérer mes adresses</a></br/>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="account-item text-center">
+            <img src="{{ asset('assets/img/purchase.png') }}" style ="max-width:32px;max-height:32px"  alt="mes commandes">
+            <a href="{{path('account_order')}}"> Mes commande</a></br/>
+        </div>
+    </div>
+</div>
+{% endblock %}
